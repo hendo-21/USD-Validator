@@ -1,0 +1,27 @@
+{
+    "checks": {
+        "default_prim": {
+            "default_severity": "ERROR",
+            "severity_by_path": {
+                "**/shots/**": "WARNING"
+            }
+        },
+        "references": {
+            "default_severity": "ERROR",
+            "severity_by_path": {}
+        },
+        "naming": {
+            "default_severity": "WARNING",
+            "severity_by_path": {
+                "**/assets/**": "ERROR"
+            },
+            "conventions": {
+                "file_pattern": "{type}_{name}_{department}_v{###}.usda",
+                "prim_patterns": {
+                    "mesh": "_GEO",
+                    "material": "_MAT"
+                }
+            }
+        }
+    }
+}
