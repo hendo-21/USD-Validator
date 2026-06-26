@@ -3,6 +3,8 @@ import textwrap
 import pathlib
 import sys
 
+from runner import check_runner
+
 def create_parser():
     parser = argparse.ArgumentParser(
         prog="USD Asset Validator",
@@ -37,7 +39,7 @@ def main():
         validate_dir(args.out.parent)
 
     # Call runner module
-    validation_results = []
+    validation_results = check_runner(args.asset_dir)
     
     # If --summarize, call summarize module to summarize the results
     if args.summarize:
