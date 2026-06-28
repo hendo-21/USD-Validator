@@ -18,9 +18,7 @@ def check_runner(asset_dir: Path) -> list:
     for usda_file in asset_dir.glob("*.usda"):
         for check_name, check_fn in CHECKS.items():
             check_results = check_fn(usda_file, naming_conventions) if check_name == "naming" else check_fn(usda_file)
-            if check_results:
-                for result in check_results:
-                    results.append(result)
+            results.extend(check_results)
 
     # Resolve severity on returned results
     for result in results:

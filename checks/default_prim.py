@@ -2,9 +2,20 @@ from pathlib import Path
 from pxr import Usd
 
 def run_default_prim_check(asset_filepath: Path) -> list:
-    filepath_str = str(asset_filepath)
-    stage = Usd.Stage.Open(file_path_str) # type: ignore
     errors = []
+    filepath_str = str(asset_filepath)
+
+    stage = Usd.Stage.Open(filepath_str) # type: ignore
+    if not stage.IsValid():
+        return [{
+            "root_path": filepath_str,
+            "check_name": "default_prim",
+            "severity": None,       # set in runner by config
+            "error": "INVALID_STAGE",
+            "message": f"Could not open stage at {asset_filepath}. Validation skipped.",
+            "detail": {}
+        }]
+
     if not stage.HasDefaultPrim():
         error_result = {
             "root_path": filepath_str,
