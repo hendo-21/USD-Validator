@@ -16,10 +16,12 @@
                 "**/assets/**": "ERROR"
             },
             "conventions": {
-                "file_pattern": "{type}_{name}_{department}_v{###}.usda",
+                "file_pattern": "^\\w+_\\w+_\\w+_v\\d{3}\\.usda$",
                 "prim_patterns": {
                     "mesh": "_GEO",
-                    "material": "_MAT"
+                    "skeleton": "_SKL",
+                    "material": "_MAT",
+                    "domelight": "_LGT"
                 }
             }
         }
