@@ -43,7 +43,7 @@ in `shots/`.
 
 ## Demo
 
-[Terminal output on test assets.](demo/terminal_ouput.png)
+[Terminal output on test assets.](demo/terminal_output.png)
 
 ## Usage
 
