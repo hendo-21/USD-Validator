@@ -4,6 +4,7 @@ import pathlib
 import sys
 
 from runner import check_runner
+from reporter import report
 
 def create_parser():
     parser = argparse.ArgumentParser(
@@ -39,19 +40,14 @@ def main():
         validate_dir(args.out.parent)
 
     # Call runner module
-    validation_results = check_runner(args.asset_dir)
+    validation_results, file_count = check_runner(args.asset_dir)
     
-    # If --summarize, call summarize module to summarize the results
+    # TODO: If --summarize, call summarize module to summarize the results
     if args.summarize:
         pass
     
     # Call reporter module 
-    if args.out:
-        # Pass out filepath as arg to reporter
-        pass
-    else:
-        # Call reporter
-        pass
+    report(args.asset_dir, validation_results, file_count, args.out)
     
     # if --strict, exit error code 1 if the validator caught any failures
     if args.strict and validation_results:

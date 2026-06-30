@@ -1,0 +1,10 @@
+#usda 1.0
+
+def "MyPrim"
+{
+    # Error: Relationships cannot have timeSamples. 
+    # This causes a fatal parsing halt in the C++ layer.
+    rel my_invalid_rel.timeSamples = {
+        1.0: </MyPrim>
+    }
+}

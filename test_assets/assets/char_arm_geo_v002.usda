@@ -1,0 +1,9 @@
+#usda 1.0
+(
+    defaultPrim = "arm_mesh"
+)
+
+def Mesh "arm_mesh"
+{
+}
+

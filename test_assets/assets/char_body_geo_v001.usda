@@ -1,0 +1,9 @@
+#usda 1.0
+(
+    defaultPrim = "body_GEO"
+)
+
+def Mesh "body_GEO"
+{
+}
+

@@ -1,0 +1,11 @@
+#usda 1.0
+(
+    defaultPrim = "rig_GEO"
+)
+
+def "rig_GEO" (
+    prepend references = @./char_body_geo_MISSING_v001.usda@
+)
+{
+}
+
