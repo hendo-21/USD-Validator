@@ -1,6 +1,6 @@
 import re
 
-from pxr import Usd
+from pxr import Usd, Tf
 from pathlib import Path
 
 def run_naming_check(asset_filepath: Path, naming_conventions: dict) -> list:
@@ -34,14 +34,15 @@ def _check_prims(asset_filepath: Path, prim_patterns: dict) -> list:
     errors = []
     filepath_str = str(asset_filepath)
 
-    stage = Usd.Stage.Open(filepath_str)    # type: ignore
-    if not stage.IsValid():
+    try:
+        stage = Usd.Stage.Open(filepath_str)    # type: ignore
+    except Tf.ErrorException:
         return [{
             "root_path": filepath_str,
             "check_name": "naming",
             "severity": None,       # set in runner by config
-            "error": "INVALID_STAGE",
-            "message": f"Could not open stage at {asset_filepath}. Validation skipped.",
+            "error": "STAGE_OPEN_FAILED",
+            "message": f"Could not open or parse {asset_filepath}. Validation skipped.",
             "detail": {}
         }]
 
